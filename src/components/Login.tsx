@@ -1,16 +1,19 @@
 "use client"
 import React from 'react'
-import { Button, Card, CardBody, CardHeader, Form, Input } from '@heroui/react';
+import { Button, Card, CardBody, CardHeader, Form, Input, Spinner } from '@heroui/react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 export default function Login() {
     const [errors, setErrors] = React.useState({});
+    const [loading , setLoading] = React.useState(false);
     const router = useRouter();
     const onSubmit = async (e: any) => {
+        setLoading(true);
         e.preventDefault();
         const data = Object.fromEntries(new FormData(e.currentTarget));
         if (!data.name) {
+            setLoading(false);
             setErrors({ name: "Name is required" });
             return;
         }
@@ -22,6 +25,7 @@ export default function Login() {
         if (result?.status == 200) {
             router.push("/dashboard");
         } else {
+            setLoading(false);
             setErrors({
                 name: "Invalid Name or email"
             })
@@ -56,7 +60,10 @@ export default function Login() {
 
                             placeholder="Enter your email"
                         />
-                        <Button type="submit" className='w-full' color='primary'>
+                        <Button type="submit" className='w-full flex items-center gap-2' color='primary' disabled={loading}>
+                            {loading && (
+                                <Spinner color='white'/>
+                            )}
                             Submit
                         </Button>
                     </Form>
