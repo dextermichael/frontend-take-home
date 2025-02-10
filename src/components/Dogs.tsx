@@ -182,7 +182,7 @@ const Dogs = ({
                                         <Image
                                             src={dog.img}
                                             alt={dog.name}
-                                            className='rounded-lg w-[150px] h-[120px] object-cover'
+                                            className='rounded-lg w-[150px] h-[120px] max-md:w-full max-md:h-[250px] object-cover'
                                             width={200}
                                             height={200}
                                         />
