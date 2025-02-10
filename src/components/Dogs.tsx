@@ -124,7 +124,7 @@ const Dogs = ({
         <div className='max-w-6xl px-3 mx-auto'>
             <div className="flex flex-wrap -mx-1 lg:-mx-2 mt-4 gap-4">
                 <Select
-                    className="max-w-xs"
+                    className="max-md:w-full md:max-w-xs"
                     label="Select an Bread"
                     placeholder="Select an Bread"
                     selectedKeys={values}
@@ -138,7 +138,7 @@ const Dogs = ({
                     ))}
                 </Select>
                 <Select
-                    className="max-w-xs"
+                    className="max-md:w-full md:max-w-xs"
                     label="Bread Order"
                     placeholder="Bread Order"
                     defaultSelectedKeys={['asc']}
@@ -151,7 +151,7 @@ const Dogs = ({
                     <SelectItem key={"desc"}>Descending</SelectItem>
 
                 </Select>
-                <Button color='primary' onPress={findDogMatch}>
+                <Button color='primary' className='max-md:w-full' onPress={findDogMatch}>
                     Find Match
                 </Button>
             </div>
