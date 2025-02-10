@@ -1,8 +1,8 @@
 "use client"
+import React from 'react'
 import { Button, Card, CardBody, CardHeader, Form, Input } from '@heroui/react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import React from 'react'
 
 export default function Login() {
     const [errors, setErrors] = React.useState({});
