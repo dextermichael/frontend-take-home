@@ -1,9 +1,10 @@
 "use client"
 import React from 'react'
 import { fetchDogs, findMatch } from '@/utils/Function';
-import {  Button, Card, CardBody, CardHeader, Select, SelectItem, Spinner, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
+import { Button, Card, CardBody, CardHeader, Select, SelectItem, Spinner, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 const Dogs = ({
     dogs,
@@ -168,11 +169,12 @@ const Dogs = ({
                                 </h2>
                                 <Button
                                     size='sm'
-                                    className='ml-auto'
+                                    className='ml-auto text-lg'
+                                    variant='flat'
                                     color={favouriteList?.find((item: string) => item == dog.id) ? "danger" : "primary"}
                                     onPress={() => favouriteList?.find((item: string) => item == dog.id) ? removeFromFavourite(dog.id) : addToFavourite(dog.id)}
                                 >
-                                    {favouriteList?.find((item: string) => item == dog.id) ? "Remove from Favourite" : "Add to Favourite"}
+                                    {favouriteList?.find((item: string) => item == dog.id) ? <FaHeart /> : <FaRegHeart />}
                                 </Button>
                             </CardHeader>
                             <CardBody>
